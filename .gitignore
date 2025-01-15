@@ -1,0 +1,3 @@
+#Files to ignore, these are referenced from what I learned in IAT 339
+*.zip
+.DS_Store
