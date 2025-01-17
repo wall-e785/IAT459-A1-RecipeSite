@@ -17,25 +17,52 @@
     </header>
 
     <!--referenced this link for form attributes: https://www.w3schools.com/html/html_forms.asp -->
-    <form>
-    <label>Recipe Title</label>
-    <input type="text" name="title">
-    <label>Recipe Description</label>
-    <input type="text" name="description">
-    <label>This recipe:</label>
-    <input type="radio" name="portion" value="serves">
-    <label>serves</label>
-    <input type="radio" name="portion" value="makes">
-    <label>makes</label>
-    <input type="text" name="size">
-    <label>Prep time</label>
-    <input type="text" name="prep_hrs">
-    <input type="text" name="prep_mins">
-    <label>Cook time</label>
-    <input type="text" name="cook_hrs">
-    <input type="text" name="cook_mins">
-    <label>List your Ingredients:</label>
-    <?php
+    <form method="post" action="process-recipe.php">
+        <table>
+            <tr>
+            <td><label>Recipe Title</label></td>
+            <td><input type="text" name="title" placeholder="Recipe Title"></td>
+            </tr>
+
+            <tr>
+            <td><label>Recipe Description</label></td>
+            <td><input type="text" name="description" placeholder="A Short Description"></td>
+            </tr>
+
+            <tr>
+            <td><label>This recipe:</label></td>
+            <td><input type="radio" name="portion" value="serves">
+            <label>serves</label></td>
+            <td><input type="radio" name="portion" value="makes">
+            <label>makes</label></td>
+            <td><input type="text" name="size" placeholder="# of people/servings"></td>
+            </tr>
+
+            <tr>
+            <td><label>Prep time</label></td>
+            <td><input type="text" name="prep_hrs"></td>
+            <td><p>:</p></td>
+            <td><input type="text" name="prep_mins"></td>
+            </tr>
+
+            <tr>
+            <td><label>Cook time</label></td>
+            <td><input type="text" name="cook_hrs"></td>
+            <td><p>:</p></td>
+            <td><input type="text" name="cook_mins"></td>
+            </tr>
+
+            <tr>
+            <td> <label>List your Ingredients:</label> <td>
+            <tr>
+
+            <tr>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Name</th>
+            </tr>
+
+        <?php
         function unit_options(){
             echo "<option value=\"pound\">Pound(s)</option>";
             echo "<option value=\"gram\">Gram(s)</option>";
@@ -46,18 +73,40 @@
             echo "<option value=\"tsp\">Teaspoon(s)</option>";
             echo "<option value=\"cup\">Cup(s)</option>";
         }
-        
+            
         //referenced this for for loops: https://www.w3schools.com/php/php_looping_for.asp
         for($i=1;$i<=10;$i++){
-            echo "<input type=\"text\" name=\"" . "iquantity" . $i . "\">\n";
+            echo "<tr>";
+            echo "<td><input type=\"text\" name=\"" . "iquantity" . $i . "\"></td>";
             //referenced this for the unit selector: https://www.w3schools.com/tags/tag_select.asp
-            echo "<select name=\"" . "iunit" . $i . "\">\n";
+            echo "<td><select name=\"" . "iunit" . $i . "\">";
             unit_options();
-            echo "</select>";
-            echo "<input type=\"text\" name=\"" . "iname" . $i . "\">\n";
+            echo "</select></td>";
+            echo "<td><input type=\"text\" name=\"" . "iname" . $i . "\"></td>";
+            echo "</tr>";
         }
-    ?>
-    <input type="submit">
+        ?>
+
+        <tr>
+        <td><label>Instructions</label></td>
+        </tr>
+
+        <!--referenced from https://www.w3schools.com/tags/tag_textarea.asp-->
+        <tr>
+        <td><textarea name="instructions"></textarea></td>
+        </tr>
+
+        <tr>
+        <td><label>Tags</label></td>
+        <td><input type="text" name="tags"></td>
+        </tr>
+        
+        <tr>
+        <td><input type="submit"></tr>
+        </tr>
+        
+        </table>
     </form>
+
 </body>
 </html>

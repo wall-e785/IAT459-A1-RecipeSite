@@ -15,6 +15,21 @@
             <a href="add-recipe.php">Add a New Recipe</a>
         </nav>
     </header>
-    
+    <?php
+        $document_root = $_SERVER['DOCUMENT_ROOT'];
+        $recipes = @fopen("/Applications/XAMPP/xamppfiles/data/recipes.txt", 'r');
+        if(!$recipes){
+            echo "<p>Error loading recipes! Try again later.</p>";
+        }
+        
+        while($arr = fgetcsv($recipes)){
+            for($i=0; $i<sizeof($arr); $i++){
+                echo "<p>$arr[$i]</p>";
+            }
+        }
+
+        fclose($recipes);
+
+    ?>
 </body>
 </html>
