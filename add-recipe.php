@@ -16,6 +16,12 @@
         </nav>
     </header>
 
+    <?php
+        // if(!empty($_POST('error-msg'))){
+        //     echo "<strong>" . $_POST('error-msg') ."</strong>";
+        // }
+    ?>
+
     <!--referenced this link for form attributes: https://www.w3schools.com/html/html_forms.asp -->
     <form method="post" action="process-recipe.php">
         <table>
@@ -107,6 +113,7 @@
         
         </table>
     </form>
+
 
 </body>
 </html>
