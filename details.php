@@ -9,7 +9,7 @@
 <body>
     <?php
         $document_root = $_SERVER['DOCUMENT_ROOT'];
-        $recipes = @fopen("/Applications/XAMPP/xamppfiles/data/recipes.txt", 'r');
+        $recipes = @fopen("$document_root/../recipes/recipes.txt", 'r');
         if(!$recipes){
             echo "<p>Error loading recipes! Try again later.</p>";
         }  
