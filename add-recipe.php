@@ -97,7 +97,7 @@
         </tr>
 
         <tr>
-        <td><label>Tags</label></td>
+        <td><label>Tags - Seperated by Commas:</label></td>
         <td><input type="text" name="tags"></td>
         </tr>
         

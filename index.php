@@ -23,9 +23,11 @@
         }
         
         while($arr = fgetcsv($recipes)){
+            echo "<table><tr>";
             for($i=0; $i<sizeof($arr); $i++){
-                echo "<p>$arr[$i]</p>";
+                echo "<td><p>$arr[$i]</p><td>";
             }
+            echo "</tr></table>";
         }
 
         fclose($recipes);
