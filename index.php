@@ -4,7 +4,6 @@
     <?php
         require 'header.php';
         $document_root = $_SERVER['DOCUMENT_ROOT'];
-        print $document_root;
         $recipes = @fopen("$document_root/../recipes/recipes.txt", 'r');
         if(!$recipes){
             echo "<p>Error loading recipes! Try again later.</p>";

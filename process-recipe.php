@@ -7,8 +7,48 @@
 </head>
 <body>
     <?php
+
+        //this function will setup the URL by insertting variables into the GET array so the form can be refilled if there is an error.
+        $return_url = "add-recipe.php?";
+
+        function return_to_form(){
+            //grab the global variable $return_url
+            global $return_url;
+
+            $var_array = array();
+
+            if(!empty($_POST['title'])){
+                $var_array[] = "title=" . $_POST['title'];
+            }
+
+            if(!empty($_POST['description'])){
+                $var_array[] = "description=" . $_POST['description'];
+            }
+
+            if(!empty($_POST['portion'])){
+                $var_array[] = "portion=" . $_POST['portion'];
+            }
+
+            if(!empty($_POST['size'])){
+                $var_array[] = "size=" . $_POST['size'];
+            }
+
+            if(sizeof($var_array)==1){
+                $return_url .= $var_array[0];
+            }else if(sizeof($var_array)>1){
+                for($i=0;$i<sizeof($var_array);$i++){
+                    if($i!=0){
+                        $return_url .= "&" . $var_array[$i];
+                    }else{
+                        $return_url .= $var_array[$i];
+                    }
+                }
+            }
+                
+        }
+
         //require all fields to be filled. Special case: ensure there is a minimum of one ingredient.
-        if(!empty($_POST['title']) && !empty($_POST['description']) && isset($_POST['portion']) && !empty($_POST['size']) && !empty($_POST['prep_hrs']) && !empty($_POST['prep_mins']) && !empty($_POST['cook_hrs']) && !empty($_POST['cook_mins']) && !empty($_POST['iquantity1']) && isset($_POST['iunit1']) && !empty($_POST['iname1']) && !empty($_POST['instructions']) && !empty($_POST['tags'])){
+        if(!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['portion']) && !empty($_POST['size']) && !empty($_POST['prep_hrs']) && !empty($_POST['prep_mins']) && !empty($_POST['cook_hrs']) && !empty($_POST['cook_mins']) && !empty($_POST['iquantity1']) && !empty($_POST['iunit1']) && !empty($_POST['iname1']) && !empty($_POST['instructions']) && !empty($_POST['tags'])){
             
             //nested if for clarity, also ensure that numerical fields only contain numbers.
             //referenced from https://www.php.net/manual/en/function.ctype-digit.php
@@ -46,11 +86,13 @@
                 fwrite($file, implode(",",$recipe));
                 fclose($file);
 
-                header('Location: index.php');
+                return_to_form();
+                header('Location: ' . $return_url);
                 exit;
             }
         }else{
-            header('Location: add-recipe.php');
+            return_to_form();
+            header('Location: ' . $return_url);
             exit;
         }   
 

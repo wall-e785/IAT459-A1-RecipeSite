@@ -27,21 +27,55 @@
         <table>
             <tr>
             <td><label>Recipe Title</label></td>
-            <td><input type="text" name="title" placeholder="Recipe Title"></td>
+            <?php
+                if(!empty($_GET['title'])){
+                    echo "<td><input type=\"text\" name=\"title\" value=" . $_GET['title'] . "></td>";
+                }else{
+                    echo "<td><input type=\"text\" name=\"title\" placeholder=\"Recipe Title\"></td>";
+                }
+            ?>
             </tr>
 
             <tr>
             <td><label>Recipe Description</label></td>
-            <td><input type="text" name="description" placeholder="A Short Description"></td>
+            <?php
+                if(!empty($_GET['description'])){
+                    echo "<td><input type=\"text\" name=\"description\" value=" . $_GET['description'] . "></td>";
+                }else{
+                    echo "<td><input type=\"text\" name=\"description\" placeholder=\"A Short Description\"></td>";
+                }
+            ?>
             </tr>
 
             <tr>
             <td><label>This recipe:</label></td>
-            <td><input type="radio" name="portion" value="serves">
-            <label>serves</label></td>
-            <td><input type="radio" name="portion" value="makes">
-            <label>makes</label></td>
-            <td><input type="text" name="size" placeholder="# of people/servings"></td>
+            <?php
+                //to make a highlighted radio button, i referenced this: https://stackoverflow.com/questions/5592345/how-to-select-a-radio-button-by-default
+                if(!empty($_GET['portion'])){
+                    if($_GET['portion'] == "serves"){
+                        echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\" checked>";
+                        echo "<label>serves</label></td>";
+                        echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\">";
+                        echo "<label>makes</label></td>";
+                    }else if($_GET['portion'] == "makes"){
+                        echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\">";
+                        echo "<label>serves</label></td>";
+                        echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\" checked>";
+                        echo "<label>makes</label></td>";
+                    }
+                }else{
+                    echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\">";
+                    echo "<label>serves</label></td>";
+                    echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\">";
+                    echo "<label>makes</label></td>";
+                }
+
+                if(!empty($_GET['size'])){
+                    echo "<td><input type=\"text\" name=\"size\" value=" . $_GET['size'] . "></td>";
+                }else{
+                    echo "<td><input type=\"text\" name=\"size\" placeholder=\"# of people or servings\"></td>";
+                }
+            ?>
             </tr>
 
             <tr>
