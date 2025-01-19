@@ -1,0 +1,22 @@
+.main-nav{
+    color:white;
+    text-decoration: none;
+}
+
+.recipe-nav{
+    color:black;
+    text-decoration: underline;
+    font-size: 1.5rem;
+}
+
+.dark-row{
+    background-color:#C9C9C9;
+}
+
+.light-row{
+    background-color: white;
+}
+
+#recipe-table{
+    width:100%;
+}
