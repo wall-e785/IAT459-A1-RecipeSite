@@ -1,30 +1,21 @@
-<!--Add a recipe page-->
+<!-- ADD RECIPE FORM PAGE -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add a New Recipe</title>
-</head>
-
-<body>
-    <header>
-    <h1>Add a New Recipe</h1>
-        <nav>
-            <a href="index.php">All Recipes</a>
-            <a href="add-recipe.php">Add a New Recipe</a>
-        </nav>
-    </header>
-
     <?php
-        // if(!empty($_POST('error-msg'))){
-        //     echo "<strong>" . $_POST('error-msg') ."</strong>";
-        // }
+        require 'header.php';
     ?>
 
-    <!--referenced this link for form attributes: https://www.w3schools.com/html/html_forms.asp -->
+    <!--referenced this link for form att{ributes: https://www.w3schools.com/html/html_forms.asp -->
     <form method="post" action="process-recipe.php">
-        <table>
+        <table id="recipe-form">
+            <?php
+                if(!empty($_GET['err_one'])){
+                    echo "<tr><strong class=\"err-msg\">Error! Incomplete form. Please make sure you fill in all required values!</strong></tr>";
+                }
+                if(!empty($_GET['err_two'])){
+                    echo "<tr><strong class=\"err-msg\">Error! Serving size, prep time and cook time can only contain numerical values!</strong></tr>";
+                }
+            ?>
             <tr>
             <td><label>Recipe Title</label></td>
             <?php
@@ -80,20 +71,20 @@
 
             <tr>
             <td><label>Prep time</label></td>
-            <td><input type="text" name="prep_hrs"></td>
+            <td><input type="text" name="prep_hrs" placeholder="Hours"></td>
             <td><p>:</p></td>
-            <td><input type="text" name="prep_mins"></td>
+            <td><input type="text" name="prep_mins" placeholder="Minutes"></td>
             </tr>
 
             <tr>
             <td><label>Cook time</label></td>
-            <td><input type="text" name="cook_hrs"></td>
+            <td><input type="text" name="cook_hrs" placeholder="Hours"></td>
             <td><p>:</p></td>
-            <td><input type="text" name="cook_mins"></td>
+            <td><input type="text" name="cook_mins" placeholder="Minutes"></td>
             </tr>
 
             <tr>
-            <td> <label>List your Ingredients:</label> <td>
+            <td> <label>List your Ingredients (min. one ingredient):</label> <td>
             <tr>
 
             <tr>
@@ -117,12 +108,12 @@
         //referenced this for for loops: https://www.w3schools.com/php/php_looping_for.asp
         for($i=1;$i<=10;$i++){
             echo "<tr>";
-            echo "<td><input type=\"text\" name=\"" . "iquantity" . $i . "\"></td>";
+            echo "<td><input type=\"text\" name=\"" . "iquantity" . $i . "\" placeholder=\"#\"></td>";
             //referenced this for the unit selector: https://www.w3schools.com/tags/tag_select.asp
             echo "<td><select name=\"" . "iunit" . $i . "\">";
             unit_options();
             echo "</select></td>";
-            echo "<td><input type=\"text\" name=\"" . "iname" . $i . "\"></td>";
+            echo "<td><input type=\"text\" name=\"" . "iname" . $i . "\" placeholder=\"Ingredient\"></td>";
             echo "</tr>";
         }
         ?>
@@ -137,7 +128,7 @@
         </tr>
 
         <tr>
-        <td><label>Tags - Seperated by Commas:</label></td>
+        <td><label>Tags (separated by commas):</label></td>
         <td><input type="text" name="tags"></td>
         </tr>
         

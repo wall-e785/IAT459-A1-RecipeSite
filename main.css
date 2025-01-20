@@ -1,3 +1,7 @@
+p, tr, th, strong{
+    font-family: 'verdana';
+}
+
 .main-nav{
     color:white;
     text-decoration: none;
@@ -17,6 +21,21 @@
     background-color: white;
 }
 
+.err-msg{
+    color: red;
+    font-size: 1.5rem;
+}
+
 #recipe-table{
     width:100%;
 }
+
+#recipe-form{
+    width: 80%;
+    text-align: center;
+}
+
+textarea{
+    resize:none;
+}
+

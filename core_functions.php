@@ -9,5 +9,6 @@
             echo "<p>Error loading recipes! Try again later.</p>";
         }
     }
+
     
 ?>
