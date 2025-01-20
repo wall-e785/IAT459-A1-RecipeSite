@@ -20,7 +20,7 @@
             <td><label>Recipe Title</label></td>
             <?php
                 if(!empty($_GET['title'])){
-                    echo "<td><input type=\"text\" name=\"title\" value=" . $_GET['title'] . "></td>";
+                    echo "<td><input type=\"text\" name=\"title\" value=\"" . $_GET['title'] . "\"></td>";
                 }else{
                     echo "<td><input type=\"text\" name=\"title\" placeholder=\"Recipe Title\"></td>";
                 }
@@ -31,7 +31,7 @@
             <td><label>Recipe Description</label></td>
             <?php
                 if(!empty($_GET['description'])){
-                    echo "<td><input type=\"text\" name=\"description\" value=" . $_GET['description'] . "></td>";
+                    echo "<td><input type=\"text\" name=\"description\" value=\"" . $_GET['description'] . "\"></td>";
                 }else{
                     echo "<td><input type=\"text\" name=\"description\" placeholder=\"A Short Description\"></td>";
                 }
@@ -62,7 +62,7 @@
                 }
 
                 if(!empty($_GET['size'])){
-                    echo "<td><input type=\"text\" name=\"size\" value=" . $_GET['size'] . "></td>";
+                    echo "<td><input type=\"text\" name=\"size\" value=\"" . $_GET['size'] . "\"></td>";
                 }else{
                     echo "<td><input type=\"text\" name=\"size\" placeholder=\"# of people or servings\"></td>";
                 }
@@ -95,14 +95,14 @@
 
         <?php
         function unit_options(){
-            echo "<option value=\"pound\">Pound(s)</option>";
-            echo "<option value=\"gram\">Gram(s)</option>";
-            echo "<option value=\"ounce\">Ounce(s)</option>";
-            echo "<option value=\"piece\">Piece(s)</option>";
-            echo "<option value=\"ml\">mL(s)</option>";
-            echo "<option value=\"tbsp\">Tablespoon(s)</option>";
-            echo "<option value=\"tsp\">Teaspoon(s)</option>";
-            echo "<option value=\"cup\">Cup(s)</option>";
+            echo "<option value=\"pound(s)\">Pound(s)</option>";
+            echo "<option value=\"gram(s)\">Gram(s)</option>";
+            echo "<option value=\"ounce(s)\">Ounce(s)</option>";
+            echo "<option value=\"piece(s)\">Piece(s)</option>";
+            echo "<option value=\"mL(s)\">mL(s)</option>";
+            echo "<option value=\"tbsp(s)\">Tablespoon(s)</option>";
+            echo "<option value=\"tsp(s)\">Teaspoon(s)</option>";
+            echo "<option value=\"cup(s)\">Cup(s)</option>";
         }
             
         //referenced this for for loops: https://www.w3schools.com/php/php_looping_for.asp

@@ -26,11 +26,21 @@
                 //referenced from: https://stackoverflow.com/questions/47304899/php-a-href-how-to-pass-value-to-another-page-when-click-the-href-and-how-to-r#:~:text=You%20simply%20add%20your%20data,by%20using%20the%20GET%20Method.&text=%24_GET%5B'id'%5D%3B
                 $link = "details.php?recipe_id=" . $line_num;
                 if($line_num%2 == 0){
-                    echo "<td><a href=" . $link .  " class=\"recipe-nav\">" . $arr[0] . "</a><td>";
+                    echo "<td><a href=" . $link .  " class=\"recipe-nav\">" . $arr[0] . "</a></td>";
                 }else{
-                    echo "<td><a href=" . $link .  " class=\"recipe-nav\">" . $arr[0] . "</a><td>";
+                    echo "<td><a href=" . $link .  " class=\"recipe-nav\">" . $arr[0] . "</a></td>";
+                }
+                echo "<td><p>Prep Time: " . $arr[4] . " hrs " . $arr[5] . " mins</p></td>";
+                echo "<td><p>Cook Time: " . $arr[6] . " hrs " . $arr[7] . " mins</p></td>";
+                if($arr[2] == 'makes'){
+                    echo "<td><p>Makes: " . $arr[3] . "</p></td>";
+                }else if($arr[2] == 'serves'){
+                    echo "<td><p>Serves: " . $arr[3] . "</p></td>";
                 }
                 echo "</tr>";
+            }
+            if($line_num == 0){
+                echo "<tr><strong>No recipes available!</strong></tr>";
             }
             echo "</table>";
         }
