@@ -8,6 +8,7 @@
     <!--referenced this link for form att{ributes: https://www.w3schools.com/html/html_forms.asp -->
     <form method="post" action="process-recipe.php">
         <table id="recipe-form">
+            <tr><h2 class="pg-header">Add a New Recipe</h2><tr>
             <?php
                 if(!empty($_GET['err_one'])){
                     echo "<tr><strong class=\"err-msg\">Error! Incomplete form. Please make sure you fill in all required values!</strong></tr>";
@@ -17,50 +18,51 @@
                 }
             ?>
             <tr>
-            <td><label>Recipe Title</label></td>
+            <td><label>Recipe Title:</label></td>
             <?php
+                //column span referenced from https://www.w3schools.com/tags/att_td_colspan.asp
                 if(!empty($_GET['title'])){
-                    echo "<td><input type=\"text\" name=\"title\" value=\"" . $_GET['title'] . "\"></td>";
+                    echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"title\" value=\"" . $_GET['title'] . "\"></td>";
                 }else{
-                    echo "<td><input type=\"text\" name=\"title\" placeholder=\"Recipe Title\"></td>";
+                    echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"title\" placeholder=\"Recipe Title\"></td>";
                 }
             ?>
             </tr>
 
             <tr>
-            <td><label>Recipe Description</label></td>
+            <td><label>Recipe Description:</label></td>
             <?php
                 if(!empty($_GET['description'])){
-                    echo "<td><input type=\"text\" name=\"description\" value=\"" . $_GET['description'] . "\"></td>";
+                    echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"description\" value=\"" . $_GET['description'] . "\"></td>";
                 }else{
-                    echo "<td><input type=\"text\" name=\"description\" placeholder=\"A Short Description\"></td>";
+                    echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"description\" placeholder=\"A Short Description\"></td>";
                 }
             ?>
             </tr>
 
             <tr>
-            <td><label>This recipe:</label></td>
+            <td><label>This Recipe:</label></td>
             <?php
                 //to make a highlighted radio button, i referenced this: https://stackoverflow.com/questions/5592345/how-to-select-a-radio-button-by-default
                 if(!empty($_GET['portion'])){
                     if($_GET['portion'] == "serves"){
-                        echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\" checked>";
+                        echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\" class=\"radio-input\" checked>";
                         echo "<label>serves</label></td>";
-                        echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\">";
+                        echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\" class=\"radio-input\">";
                         echo "<label>makes</label></td>";
                     }else if($_GET['portion'] == "makes"){
-                        echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\">";
+                        echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\" class=\"radio-input\">";
                         echo "<label>serves</label></td>";
-                        echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\" checked>";
+                        echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\" class=\"radio-input\" checked>";
                         echo "<label>makes</label></td>";
                     }
                 }else{
-                    echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\">";
+                    echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\" class=\"radio-input\">";
                     echo "<label>serves</label></td>";
-                    echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\">";
+                    echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\" class=\"radio-input\">";
                     echo "<label>makes</label></td>";
                 }
-
+                echo "</tr><tr><td></td>";
                 if(!empty($_GET['size'])){
                     echo "<td><input type=\"text\" name=\"size\" value=\"" . $_GET['size'] . "\"></td>";
                 }else{
@@ -70,21 +72,19 @@
             </tr>
 
             <tr>
-            <td><label>Prep time</label></td>
+            <td><label>Prep Time:</label></td>
             <td><input type="text" name="prep_hrs" placeholder="Hours"></td>
-            <td><p>:</p></td>
             <td><input type="text" name="prep_mins" placeholder="Minutes"></td>
             </tr>
 
             <tr>
-            <td><label>Cook time</label></td>
+            <td><label>Cook Time:</label></td>
             <td><input type="text" name="cook_hrs" placeholder="Hours"></td>
-            <td><p>:</p></td>
             <td><input type="text" name="cook_mins" placeholder="Minutes"></td>
             </tr>
 
             <tr>
-            <td> <label>List your Ingredients (min. one ingredient):</label> <td>
+            <td class="fill-row-label" colspan="3"> <label>List Your Ingredients (min. one ingredient):</label> <td>
             <tr>
 
             <tr>
@@ -108,32 +108,36 @@
         //referenced this for for loops: https://www.w3schools.com/php/php_looping_for.asp
         for($i=1;$i<=10;$i++){
             echo "<tr>";
-            echo "<td><input type=\"text\" name=\"" . "iquantity" . $i . "\" placeholder=\"#\"></td>";
+            echo "<td class=\"center-input\"><input type=\"text\" name=\"" . "iquantity" . $i . "\" placeholder=\"#\"></td>";
             //referenced this for the unit selector: https://www.w3schools.com/tags/tag_select.asp
-            echo "<td><select name=\"" . "iunit" . $i . "\">";
+            echo "<td class=\"center-input\"><select name=\"" . "iunit" . $i . "\">";
             unit_options();
             echo "</select></td>";
-            echo "<td><input type=\"text\" name=\"" . "iname" . $i . "\" placeholder=\"Ingredient\"></td>";
+            echo "<td class=\"center-input\"><input type=\"text\" name=\"" . "iname" . $i . "\" placeholder=\"Ingredient\"></td>";
             echo "</tr>";
         }
         ?>
 
         <tr>
-        <td><label>Instructions</label></td>
+        <td><label>Instructions:</label></td>
         </tr>
 
         <!--referenced from https://www.w3schools.com/tags/tag_textarea.asp-->
         <tr>
-        <td><textarea name="instructions"></textarea></td>
+        <td colspan="3"><textarea name="instructions"></textarea></td>
         </tr>
 
         <tr>
-        <td><label>Tags (separated by commas):</label></td>
-        <td><input type="text" name="tags"></td>
+        <td class="fill-row-label" colspan="3"><label>Tags (separated by commas):</label></td>
+        </tr>
+
+        <tr>
+        <td class="fill-row-input" colspan="3"><input type="text" name="tags"></td>
         </tr>
         
         <tr>
-        <td><input type="submit"></tr>
+        <td></td>
+        <td><input type="submit"></td>
         </tr>
         
         </table>

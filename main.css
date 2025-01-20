@@ -23,7 +23,8 @@ p, tr, th, strong, h1, h2, h3{
 
 .err-msg{
     color: red;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    text-align: center;
 }
 
 #recipe-table{
@@ -31,11 +32,59 @@ p, tr, th, strong, h1, h2, h3{
 }
 
 #recipe-form{
-    width: 80%;
+    width: 40rem;
+    margin: auto;
+    color: rgb(76, 187, 76);
+    /*borders referenced from: https://www.w3schools.com/css/css_table.asp*/
+    border: .2rem solid;
+    background-color: rgba(128, 128, 128, 0.215);
+    padding: .75rem 2rem;
+}
+
+#recipe-form label{
+    color: green;
+}
+
+#recipe-form input, select, textarea{
+    background-color: rgba(128, 128, 128, 0.215);
+    border-radius: .25rem;
+}
+
+input{
+    width: 10rem;
+}
+
+.fill-row-input input{
+    width: 100%;
+}
+
+.fill-row-label label{
+    width: 100%;
+}
+
+.center-input{
     text-align: center;
+}
+
+
+.radio-input{
+    width: auto;
+}
+
+.pg-header{
+    text-align: center;
+    font-size: 2rem;
+    color: green;
 }
 
 textarea{
     resize:none;
+    height: 6rem;
+    width: 100%;
+}
+
+label{
+    font-weight: bold;
+    float: left;
 }
 
