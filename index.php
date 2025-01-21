@@ -4,6 +4,11 @@
     <?php
         require 'header.php';
         $document_root = $_SERVER['DOCUMENT_ROOT'];
+
+        //use these two lines to clear the txt file
+        //$recipes = @fopen("$document_root/../recipes/recipes.txt", 'w');
+        //fclose($recipes);
+
         $recipes = @fopen("$document_root/../recipes/recipes.txt", 'r');
         if(!$recipes){
             echo "<p>Error loading recipes! Try again later.</p>";
@@ -40,7 +45,7 @@
                 echo "</tr>";
             }
             if($line_num == 0){
-                echo "<tr><strong>No recipes available!</strong></tr>";
+                echo "<tr><h2>No recipes available!</h2></tr>";
             }
             echo "</table>";
         }

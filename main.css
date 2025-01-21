@@ -29,9 +29,11 @@ p, tr, th, strong, h1, h2, h3{
 
 #recipe-table{
     width:100%;
+    border: .2rem solid;
+    border-color: black;
 }
 
-#recipe-form{
+#recipe-form, #details-page{
     width: 40rem;
     margin: auto;
     color: rgb(76, 187, 76);

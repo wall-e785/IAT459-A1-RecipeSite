@@ -55,7 +55,7 @@
         }
 
         //require all fields to be filled. Special case: ensure there is a minimum of one ingredient.
-        if(!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['portion']) && !empty($_POST['size']) && !empty($_POST['prep_hrs']) && !empty($_POST['prep_mins']) && !empty($_POST['cook_hrs']) && !empty($_POST['cook_mins']) && !empty($_POST['iquantity1']) && !empty($_POST['iunit1']) && !empty($_POST['iname1']) && !empty($_POST['instructions']) && !empty($_POST['tags'])){
+        if(!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['portion']) && !empty($_POST['size']) && isset($_POST['prep_hrs']) && isset($_POST['prep_mins']) && isset($_POST['cook_hrs']) && isset($_POST['cook_mins']) && !empty($_POST['iquantity1']) && !empty($_POST['iunit1']) && !empty($_POST['iname1']) && !empty($_POST['instructions']) && !empty($_POST['tags'])){
             
 
 

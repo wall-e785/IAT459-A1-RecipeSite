@@ -35,7 +35,7 @@
                 if(!empty($_GET['description'])){
                     echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"description\" value=\"" . $_GET['description'] . "\"></td>";
                 }else{
-                    echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"description\" placeholder=\"A Short Description\"></td>";
+                    echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"description\" placeholder=\"A Short Description (No Commas Permitted!)\"></td>";
                 }
             ?>
             </tr>
@@ -124,7 +124,7 @@
 
         <!--referenced from https://www.w3schools.com/tags/tag_textarea.asp-->
         <tr>
-        <td colspan="3"><textarea name="instructions"></textarea></td>
+        <td colspan="3"><textarea name="instructions" placeholder="Enter your step by step instructions here in one paragraph... Please do not include any commas!"></textarea></td>
         </tr>
 
         <tr>
