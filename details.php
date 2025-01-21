@@ -24,15 +24,15 @@
                     print $num_of_ingredients;
 
                     //start table
-                    echo "<table id=\"details-page\"><tr>";
+                    echo "<table id=\"details-page\">";
 
                     //display the title, tags, description, serving size, prep and cook time.
-                    echo "<td><h2>" . $info_array[0] . "</h2></td>";
+                    echo "<tr><td colspan=\"2\"><h2>" . $info_array[0] . "</h2></td></tr>";
 
                     //tags need to be reformatted by their delimiter for proper visual display to the user
                     $tags_arr = explode('^',$info_array[sizeof($info_array) - 1]);
                     $tags = implode(', ', $tags_arr);
-                    echo "<td><p>" . $tags . "</p></td></tr>";
+                    echo "<tr><td colspan=\"2\"><p class=\"center-text\">" . $tags . "</p></td></tr>";
                     
                     echo "<tr><td><p>" . $info_array[1] . "</p></td>";
                     if($info_array[2] == 'makes') echo "<td><p>Makes: ";

@@ -1,7 +1,8 @@
+<!--Main site header used on all pages. Referenced from week 2 lecture demos -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipes</title>
+    <title>Wallace's Recipes</title>
     <style>
         a { color:black;}
     </style>

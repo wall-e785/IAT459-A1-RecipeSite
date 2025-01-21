@@ -2,25 +2,28 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php
+        //import the header
         require 'header.php';
     ?>
 
-    <!--referenced this link for form att{ributes: https://www.w3schools.com/html/html_forms.asp -->
+    <!--referenced this link for form attributes: https://www.w3schools.com/html/html_forms.asp -->
     <form method="post" action="process-recipe.php">
         <table id="recipe-form">
             <tr><h2 class="pg-header">Add a New Recipe</h2><tr>
             <?php
+                //check if there are any error codes in the URL, if so, display the proper message to the user.
                 if(!empty($_GET['err_one'])){
-                    echo "<tr><strong class=\"err-msg\">Error! Incomplete form. Please make sure you fill in all required values!</strong></tr>";
+                    //column span referenced from https://www.w3schools.com/tags/att_td_colspan.asp
+                    echo "<tr><td colspan=\"3\"><strong class=\"err-msg\">Error! Incomplete form. Please make sure you fill in all required values!</strong></td></tr>";
                 }
                 if(!empty($_GET['err_two'])){
-                    echo "<tr><strong class=\"err-msg\">Error! Serving size, prep time and cook time can only contain numerical values!</strong></tr>";
+                    echo "<tr><td colspan=\"3\"><strong class=\"err-msg\">Error! Serving size, prep time and cook time can only contain numerical values!</strong></td></tr>";
                 }
             ?>
             <tr>
             <td><label>Recipe Title:</label></td>
             <?php
-                //column span referenced from https://www.w3schools.com/tags/att_td_colspan.asp
+                //if this is a resubmission, redisplay any filled in title
                 if(!empty($_GET['title'])){
                     echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"title\" value=\"" . $_GET['title'] . "\"></td>";
                 }else{
@@ -32,6 +35,7 @@
             <tr>
             <td><label>Recipe Description:</label></td>
             <?php
+                //if this is a resubmission, redisplay any filled in description                
                 if(!empty($_GET['description'])){
                     echo "<td class=\"fill-row-input\" colspan=\"2\"><input type=\"text\" name=\"description\" value=\"" . $_GET['description'] . "\"></td>";
                 }else{
@@ -44,25 +48,27 @@
             <td><label>This Recipe:</label></td>
             <?php
                 //to make a highlighted radio button, i referenced this: https://stackoverflow.com/questions/5592345/how-to-select-a-radio-button-by-default
-                if(!empty($_GET['portion'])){
-                    if($_GET['portion'] == "serves"){
+                if(!empty($_GET['portion'])){ //if there is a saved value for the portion type
+                    if($_GET['portion'] == "serves"){ //if the portion type was serves
                         echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\" class=\"radio-input\" checked>";
                         echo "<label>serves</label></td>";
                         echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\" class=\"radio-input\">";
                         echo "<label>makes</label></td>";
-                    }else if($_GET['portion'] == "makes"){
+                    }else if($_GET['portion'] == "makes"){ //if the portion type was makes
                         echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\" class=\"radio-input\">";
                         echo "<label>serves</label></td>";
                         echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\" class=\"radio-input\" checked>";
                         echo "<label>makes</label></td>";
                     }
-                }else{
+                }else{ //else if there was no saved portion value, leave both radio buttons unhighlighted
                     echo "<td><input type=\"radio\" name=\"portion\" value=\"serves\" class=\"radio-input\">";
                     echo "<label>serves</label></td>";
                     echo "<td><input type=\"radio\" name=\"portion\" value=\"makes\" class=\"radio-input\">";
                     echo "<label>makes</label></td>";
                 }
                 echo "</tr><tr><td></td>";
+
+                //if this is a resubmission, redisplay any filled in size
                 if(!empty($_GET['size'])){
                     echo "<td><input type=\"text\" name=\"size\" value=\"" . $_GET['size'] . "\"></td>";
                 }else{
@@ -94,6 +100,8 @@
             </tr>
 
         <?php
+
+        //this function creates the options for the unit selector
         function unit_options(){
             echo "<option value=\"pound(s)\">Pound(s)</option>";
             echo "<option value=\"gram(s)\">Gram(s)</option>";
@@ -124,6 +132,7 @@
 
         <!--referenced from https://www.w3schools.com/tags/tag_textarea.asp-->
         <tr>
+        <!--Prompt user to not use commas so the CSV file will save properly -->
         <td colspan="3"><textarea name="instructions" placeholder="Enter your step by step instructions here in one paragraph... Please do not include any commas!"></textarea></td>
         </tr>
 

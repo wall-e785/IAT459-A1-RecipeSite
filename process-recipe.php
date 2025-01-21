@@ -1,3 +1,4 @@
+<!-- Page to process recipe, no visual component only backend purposes-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
